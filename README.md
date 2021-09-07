@@ -1,2 +1,1 @@
-# 5-SemesterProjekt
-5 Semester Projekt
+Lotka-Volterra modelled in python.
