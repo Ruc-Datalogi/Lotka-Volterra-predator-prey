@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 # alpha is the natural growing rate of rabbits, when there's no fox
 # beta is the natural dying rate of rabbits, due to predation
 # gamma is the natural dying rate of fox, when there's no rabbit
 # delta is the factor describing how many caught rabbits let create a new fox
+
 
 def LotkaVolterra_EEuler(R0, F0, alpha, beta, gamma, delta, t):
     # Solves Lotka-Volterra equations for one prey and one predator species using
@@ -45,8 +45,10 @@ def main():
     R, F = LotkaVolterra_EEuler(R0, F0, alpha, beta, gamma, delta, t)
 
     # Plot the solution
-    plt.plot(t, R, 'b.-', t, F, 'r-')
+    plt.plot(t, R, 'g.-', t, F, 'b-')
     plt.legend(['Baboon', 'Cheetah'])
+    plt.xlabel('Time')
+    plt.ylabel('Population')
     plt.grid(True)
     plt.title("Solution of Lotka-Volterra system using explicit Euler")
     plt.show()
