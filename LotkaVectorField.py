@@ -38,7 +38,7 @@ def LotkaVectorField():
     a = 1; b = 1
     A = 1; B = 1
 
-    # Create xy plane
+    # Create xy plane, Vector field
     x = np.arange(0, 5, 0.5)
     y = np.arange(0, 5, 0.5)
     x, y = np.meshgrid(x, y)
