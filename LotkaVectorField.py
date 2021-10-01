@@ -46,15 +46,15 @@ def LotkaVectorField():
     fig, ax = plt.subplots()
     ax.quiver(x, y, i, j, pivot='mid')
 
-    levels  = np.arange(-10,10,0.2)
+    #Streamlines
+    levels  = np.arange(-10,10,0.2) #3rd value indicates how many stream lines
+    x = np.arange(0, 5, 0.1) #third value indicates smoothness of x component of streamline
+    y = np.arange(0, 5, 0.1) #smoothness of y
+    x, y = np.meshgrid(x, y) #mix em
 
-    x = np.arange(0, 5, 0.1)
-    y = np.arange(0, 5, 0.1)
-    x, y = np.meshgrid(x, y)
+    C=B*x-A*np.log(abs(x))-a*np.log(abs(y))+B*y #The streamline equation for lotka-volterra
 
-    C=B*x-A*np.log(abs(x))-a*np.log(abs(y))+B*y
-
-    ax.contour(x, y, C, levels)
+    ax.contour(x, y, C, levels) #plot it 
     plt.show()
 
 
