@@ -3,19 +3,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 
-def LotkaVolterra_EEuler(R0, F0, alpha, beta, gamma, delta, t):
- R = np.zeros(len(t)) # Pre-allocate the memory for R
- F = np.zeros(len(t)) # Pre-allocate the memory for F
-
- R[0] = R0
- F[0] = F0
-
- for n in range(0,len(t)-1):
-  dt = t[n+1] - t[n]
-  R[n+1] = R[n]*(1 + alpha*dt - gamma*dt*F[n])
-  F[n+1] = F[n]*(1 - beta*dt + delta*dt*R[n])
- return R,F
-
 def LotkaStandard():
     t = np.linspace(0,40,3600)
     alpha, beta, gamma, delta = 1.1,0.4,0.4,0.1
@@ -51,7 +38,7 @@ def LotkaGraph():
     t_span = (0.0,4000.0)
 
     #initial values
-    y0 = [10,10]
+    y0 = [3,1]
 
     #params
     param = (alpha,beta,iota,delta,gamma,kappa)
@@ -81,7 +68,7 @@ def LotkaVectorField():
     x = np.arange(0, 5, 0.2)
     y = np.arange(0, 5, 0.2)
     x, y = np.meshgrid(x, y)
-    i=alpha*x-beta*x*y-x**2*iota; j=delta*x*y-gamma*y-y**2*kappa
+    i=alpha*x-beta*x*y-x**2*iota; j=delta*x*y-gamma*y
     fig, ax = plt.subplots()
 
     i = i/np.sqrt(i**2+j**2)
@@ -114,7 +101,7 @@ def LotkaVectorField():
 
 def main():
     LotkaGraph()
-    #LotkaVectorField()
+    LotkaVectorField()
 
 
 main() # Call the driver to get the results
